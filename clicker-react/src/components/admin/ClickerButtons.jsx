@@ -5,9 +5,6 @@ import {
   Content,
   Button,
   Icon,
-  Card,
-  CardItem,
-  Body,
   Text,
   Grid,
   Col,
@@ -33,13 +30,20 @@ export default function ClickerButtons() {
               transparent
               light
               style={{
+                margin: 50,
                 alignSelf: "center",
               }}
             >
-              <Icon name='arrow-up' />
+              <Icon
+                style={{
+                  fontSize: 100,
+                }}
+                name='arrow-up'
+              />
             </Button>
             <Text
               style={{
+                fontSize: 100,
                 alignSelf: "center",
               }}
             >
@@ -50,10 +54,16 @@ export default function ClickerButtons() {
               transparent
               light
               style={{
+                margin: 50,
                 alignSelf: "center",
               }}
             >
-              <Icon name='arrow-down' />
+              <Icon
+                style={{
+                  fontSize: 100,
+                }}
+                name='arrow-down'
+              />
             </Button>
           </Col>
         </Grid>
