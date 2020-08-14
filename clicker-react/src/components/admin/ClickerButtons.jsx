@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { Alert } from 'react-native';
 import {
   View,
   Container,
@@ -33,7 +34,19 @@ export default function ClickerButtons(props) {
   }
 
   function clear() {
-    setCurrentCount(0);
+    Alert.alert(
+      'Confirm',
+      'Are you sure you want to clear the current count?',
+      [
+        {
+          text: 'Yes',
+          onPress: () => setCurrentCount(0),
+          style: 'cancel',
+        },
+        { text: 'No' },
+      ],
+      { cancelable: false }
+    );
   }
   if (fontLoading) {
     return <View></View>;
