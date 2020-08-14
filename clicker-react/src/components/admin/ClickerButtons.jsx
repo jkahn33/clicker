@@ -1,17 +1,30 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect } from 'react';
 import {
+  View,
   Container,
-  Header,
   Content,
   Button,
   Icon,
   Text,
   Grid,
   Col,
-} from "native-base";
+} from 'native-base';
+import GlobalHeader from '../global/GlobalHeader';
 
-export default function ClickerButtons() {
+export default function ClickerButtons(props) {
+  const [fontLoading, setFontLoading] = useState(true);
   const [currentCount, setCurrentCount] = useState(0);
+
+  useEffect(() => {
+    async function loadFont() {
+      await Expo.Font.loadAsync({
+        Roboto: require('native-base/Fonts/Roboto.ttf'),
+        Roboto_medium: require('native-base/Fonts/Roboto_medium.ttf'),
+      });
+      setFontLoading(false);
+    }
+    loadFont();
+  }, []);
 
   function decreaseCount() {
     if (currentCount > 0) {
@@ -19,11 +32,18 @@ export default function ClickerButtons() {
     }
   }
 
+  function clear() {
+    setCurrentCount(0);
+  }
+  if (fontLoading) {
+    return <View></View>;
+  }
+  console.log(props);
   return (
     <Container>
-      <Header />
+      <GlobalHeader />
       <Content contentContainerStyle={{ flex: 1 }} style={{ padding: 10 }}>
-        <Grid style={{ alignItems: "center" }}>
+        <Grid style={{ alignItems: 'center' }}>
           <Col>
             <Button
               onPress={() => setCurrentCount(currentCount + 1)}
@@ -31,7 +51,7 @@ export default function ClickerButtons() {
               light
               style={{
                 margin: 50,
-                alignSelf: "center",
+                alignSelf: 'center',
               }}
             >
               <Icon
@@ -44,7 +64,7 @@ export default function ClickerButtons() {
             <Text
               style={{
                 fontSize: 100,
-                alignSelf: "center",
+                alignSelf: 'center',
               }}
             >
               {currentCount}
@@ -55,7 +75,7 @@ export default function ClickerButtons() {
               light
               style={{
                 margin: 50,
-                alignSelf: "center",
+                alignSelf: 'center',
               }}
             >
               <Icon
@@ -67,6 +87,9 @@ export default function ClickerButtons() {
             </Button>
           </Col>
         </Grid>
+        <Button onPress={clear} danger rounded>
+          <Text>Clear</Text>
+        </Button>
       </Content>
     </Container>
   );
