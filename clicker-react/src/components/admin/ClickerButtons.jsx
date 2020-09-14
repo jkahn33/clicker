@@ -46,7 +46,7 @@ export default function ClickerButtons(props) {
   return (
     <Container>
       <View style={styles.title}>
-        <Text>{props.title}</Text>
+        <Text style={{ fontSize: 25, textAlign: 'center' }}>{props.title}</Text>
       </View>
       <View style={{ flex: 7, alignSelf: 'center', flexDirection: 'column' }}>
         <Button
@@ -78,7 +78,7 @@ const styles = StyleSheet.create({
   title: {
     flex: 1,
     marginLeft: 15,
-    fontSize: 100,
+    marginBottom: 60,
     alignSelf: 'center',
   },
   arrowButton: {
