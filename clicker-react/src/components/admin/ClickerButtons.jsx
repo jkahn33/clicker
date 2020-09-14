@@ -5,7 +5,6 @@ import { View, Container, Content, Button, Text } from 'native-base';
 
 export default function ClickerButtons(props) {
   const [fontLoading, setFontLoading] = useState(true);
-  const [currentCount, setCurrentCount] = useState(0);
 
   useEffect(() => {
     async function loadFont() {
@@ -18,11 +17,7 @@ export default function ClickerButtons(props) {
     loadFont();
   }, []);
 
-  function decreaseCount() {
-    if (currentCount > 0) {
-      setCurrentCount(currentCount - 1);
-    }
-  }
+  function decreaseCount() {}
 
   function clear() {
     Alert.alert(
@@ -50,16 +45,16 @@ export default function ClickerButtons(props) {
       </View>
       <View style={{ flex: 7, alignSelf: 'center', flexDirection: 'column' }}>
         <Button
-          onPress={() => setCurrentCount(currentCount + 1)}
+          onPress={() => props.setCurrentCount(props.currentCount + 1)}
           transparent
           light
           style={styles.arrowButton}
         >
           <Icon style={styles.buttonIcon} name='triangle-up' />
         </Button>
-        <Text style={styles.numberIcon}>{currentCount}</Text>
+        <Text style={styles.numberIcon}>{props.currentCount}</Text>
         <Button
-          onPress={decreaseCount}
+          onPress={props.decreaseCount}
           transparent
           light
           style={styles.arrowButton}

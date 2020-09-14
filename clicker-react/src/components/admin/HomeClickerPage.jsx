@@ -6,6 +6,28 @@ import GlobalHeader from '../global/GlobalHeader';
 import ClickerButtons from './ClickerButtons';
 
 export default function HomeClickerPage(props) {
+  const [lineCurrentCount, setLineCurrentCount] = useState(0);
+  const [storeCurrentCount, setStoreCurrentCount] = useState(0);
+
+  function decreaseLineCount() {
+    if (lineCurrentCount > 0) {
+      setLineCurrentCount(lineCurrentCount - 1);
+    }
+  }
+
+  function decreaseStoreCount() {
+    if (storeCurrentCount > 0) {
+      setStoreCurrentCount(storeCurrentCount - 1);
+    }
+  }
+
+  function increaseStoreCurrentCount(newCount) {
+    setStoreCurrentCount(newCount);
+    if (lineCurrentCount > 0) {
+      setLineCurrentCount(lineCurrentCount - 1);
+    }
+  }
+
   return (
     <Container>
       <GlobalHeader />
@@ -15,12 +37,18 @@ export default function HomeClickerPage(props) {
       <View style={{ flex: 4, flexDirection: 'row' }}>
         <View style={{ flex: 1, flexDirection: 'column' }}>
           <ClickerButtons
+            currentCount={lineCurrentCount}
+            setCurrentCount={setLineCurrentCount}
+            decreaseCount={decreaseLineCount}
             title={'Total People In Line'}
             company={props.company}
           />
         </View>
         <View style={{ flex: 1, flexDirection: 'column' }}>
           <ClickerButtons
+            currentCount={storeCurrentCount}
+            setCurrentCount={increaseStoreCurrentCount}
+            decreaseCount={decreaseStoreCount}
             title={'Total People In Store'}
             company={props.company}
           />
