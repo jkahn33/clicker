@@ -32,7 +32,7 @@ export default function HomeClickerPage(props) {
     <Container>
       <GlobalHeader />
       <View style={{ flex: 1 }}>
-        <Text>Hello Test</Text>
+        <Text style={styles.title}>Walmart Store #1204</Text>
       </View>
       <View style={{ flex: 4, flexDirection: 'row' }}>
         <View style={{ flex: 1, flexDirection: 'column' }}>
@@ -57,3 +57,13 @@ export default function HomeClickerPage(props) {
     </Container>
   );
 }
+
+const styles = StyleSheet.create({
+  title: {
+    textAlign: 'center',
+    fontWeight: 'bold',
+    fontSize: 30,
+    marginTop: 50,
+    marginBottom: 20,
+  },
+});
