@@ -1,8 +1,14 @@
 import React from 'react';
-import ClickerButtons from './components/admin/ClickerButtons';
+import { NavigationContainer } from '@react-navigation/native';
 import { company } from '../mock-objects/company';
-import HomeClickerPage from './components/admin/HomeClickerPage';
+import GlobalHeader from './components/global/GlobalHeader';
+import BottomTabNav from './components/global/BottomTabNav';
 
 export default function Clicker() {
-  return <HomeClickerPage company={company} />;
+  return (
+    <NavigationContainer>
+      <GlobalHeader />
+      <BottomTabNav />
+    </NavigationContainer>
+  );
 }
