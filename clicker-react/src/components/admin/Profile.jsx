@@ -9,6 +9,7 @@ export default function Profile() {
     setCompanyObj((companyObj) => ({ ...companyObj, [name]: value }));
   };
 
+  // TODO add validation
   return (
     <Container>
       <Form>
